@@ -1,0 +1,388 @@
+# ===================================================
+# ExpiCore — лёгкая альтернатива EssentialsX
+# Русская локализация, Paper/Spigot 1.16.5 — 1.21.1
+# ===================================================
+name: ExpiCore
+version: ${project.version}
+main: ru.expicore.ExpiCore
+api-version: "1.16"
+description: Лёгкая альтернатива EssentialsX с полной русской локализацией
+author: ExpiCore Team
+
+# ===================================================
+#  Команды
+# ===================================================
+commands:
+  # --- Телепортация ---
+  tpa:
+    description: Отправить запрос на телепортацию к игроку
+    usage: /tpa <игрок>
+    permission: expicore.tpa
+  tpaccept:
+    description: Принять запрос на телепортацию
+    usage: /tpaccept
+    permission: expicore.tpa
+
+  # --- Дома ---
+  sethome:
+    description: Установить точку дома
+    usage: /sethome [название]
+    permission: expicore.home
+  home:
+    description: Телепортироваться к точке дома
+    usage: /home [название]
+    permission: expicore.home
+  delhome:
+    description: Удалить точку дома
+    usage: /delhome [название]
+    permission: expicore.home
+
+  # --- Варпы ---
+  setwarp:
+    description: Создать варп
+    usage: /setwarp <название>
+    permission: expicore.warp.set
+  warp:
+    description: Телепортироваться к варпу
+    usage: /warp <название>
+    permission: expicore.warp
+  delwarp:
+    description: Удалить варп
+    usage: /delwarp <название>
+    permission: expicore.warp.delete
+
+  # --- Игровой режим ---
+  gamemode:
+    description: Изменить игровой режим
+    usage: /gamemode <survival|creative|spectator|adventure>
+    aliases: [gm]
+    permission: expicore.gamemode
+  gmc:
+    description: Переключиться в творческий режим
+    usage: /gmc
+    permission: expicore.gamemode
+  gms:
+    description: Переключиться в режим выживания
+    usage: /gms
+    permission: expicore.gamemode
+  gmsp:
+    description: Переключиться в режим наблюдателя
+    usage: /gmsp
+    permission: expicore.gamemode
+
+  # --- Режим бога / полёт ---
+  god:
+    description: Переключить режим неуязвимости
+    usage: /god
+    permission: expicore.god
+  fly:
+    description: Переключить режим полёта
+    usage: /fly
+    permission: expicore.fly
+
+  # --- Киты ---
+  kit:
+    description: Управление китами
+    usage: /kit <название|create|delete|editor>
+    permission: expicore.kit
+
+  # --- Утилиты игрока ---
+  feed:
+    description: Восстановить голод
+    usage: /feed [игрок]
+    permission: expicore.feed
+  heal:
+    description: Восстановить здоровье, голод и снять эффекты
+    usage: /heal [игрок]
+    permission: expicore.heal
+  repair:
+    description: Починить предмет в руке или весь инвентарь
+    usage: /repair [all]
+    permission: expicore.repair.hand
+  hat:
+    description: Надеть предмет из руки на голову
+    usage: /hat
+    permission: expicore.hat
+  suicide:
+    description: Покончить с собой
+    usage: /suicide
+    permission: expicore.suicide
+  workbench:
+    description: Открыть виртуальный верстак
+    usage: /workbench
+    aliases: [wb, craft]
+    permission: expicore.workbench
+  enderchest:
+    description: Открыть персональный эндер-сундук
+    usage: /enderchest
+    aliases: [ec]
+    permission: expicore.enderchest
+
+  # --- Модерирование ---
+  invsee:
+    description: Просмотреть/редактировать инвентарь игрока
+    usage: /invsee <игрок>
+    permission: expicore.invsee
+  broadcast:
+    description: Отправить глобальное объявление
+    usage: /broadcast <сообщение>
+    aliases: [bc]
+    permission: expicore.broadcast
+  clear:
+    description: Очистить инвентарь
+    usage: /clear [игрок]
+    permission: expicore.clear
+
+  # --- Спавн ---
+  spawn:
+    description: Телепортироваться на спавн
+    usage: /spawn
+    permission: expicore.spawn
+  setspawn:
+    description: Установить точку спавна
+    usage: /setspawn
+    permission: expicore.setspawn
+
+  # --- Личные сообщения ---
+  msg:
+    description: Отправить личное сообщение
+    usage: /msg <игрок> <текст>
+    aliases: [tell, w, pm]
+    permission: expicore.msg
+  r:
+    description: Ответить на последнее личное сообщение
+    usage: /r <текст>
+    aliases: [reply]
+    permission: expicore.msg
+
+  # --- Игнорирование ---
+  ignore:
+    description: Добавить или убрать игрока из списка игнорируемых
+    usage: /ignore <игрок>
+    permission: expicore.ignore
+
+  # --- Шпион за сообщениями ---
+  socialspy:
+    description: Включить/выключить чтение чужих личных сообщений
+    usage: /socialspy
+    permission: expicore.socialspy
+
+  # --- Наказания ---
+  kick:
+    description: Кикнуть игрока с сервера
+    usage: /kick <игрок> [причина]
+    permission: expicore.kick
+  mute:
+    description: Замутить игрока (навсегда или на время)
+    usage: /mute <игрок> [минуты] [причина]
+    permission: expicore.mute
+  unmute:
+    description: Снять мут с игрока
+    usage: /unmute <игрок>
+    permission: expicore.unmute
+  ban:
+    description: Забанить игрока навсегда
+    usage: /ban <игрок> [причина]
+    permission: expicore.ban
+  unban:
+    description: Снять бан с игрока
+    usage: /unban <игрок>
+    permission: expicore.unban
+  tempban:
+    description: Забанить игрока на время
+    usage: /tempban <игрок> <время> [причина]
+    permission: expicore.tempban
+
+  # --- AFK ---
+  afk:
+    description: Переключить режим AFK (отошёл)
+    usage: /afk
+    permission: expicore.afk
+
+  # --- Мониторинг ---
+  gc:
+    description: Показать статистику сервера (TPS, RAM, чанки)
+    usage: /gc
+    aliases: [lag, mem, tps]
+    permission: expicore.gc
+  near:
+    description: Показать ближайших игроков
+    usage: /near [радиус]
+    permission: expicore.near
+
+# ===================================================
+#  Права (permissions)
+# ===================================================
+permissions:
+  expicore.*:
+    description: Все права ExpiCore
+    default: op
+    children:
+      expicore.admin: true
+      expicore.tpa: true
+      expicore.home: true
+      expicore.warp: true
+      expicore.warp.set: true
+      expicore.warp.delete: true
+      expicore.gamemode: true
+      expicore.god: true
+      expicore.fly: true
+      expicore.kit: true
+      expicore.kit.admin: true
+      expicore.feed: true
+      expicore.feed.others: true
+      expicore.heal: true
+      expicore.heal.others: true
+      expicore.repair.hand: true
+      expicore.repair.all: true
+      expicore.hat: true
+      expicore.workbench: true
+      expicore.enderchest: true
+      expicore.invsee: true
+      expicore.broadcast: true
+      expicore.clear: true
+      expicore.clear.others: true
+      expicore.spawn: true
+      expicore.setspawn: true
+      expicore.msg: true
+      expicore.suicide: true
+      expicore.ignore: true
+      expicore.ignore.exempt: true
+      expicore.socialspy: true
+      expicore.kick: true
+      expicore.mute: true
+      expicore.unmute: true
+      expicore.ban: true
+      expicore.unban: true
+      expicore.tempban: true
+      expicore.afk: true
+      expicore.gc: true
+      expicore.near: true
+      expicore.signs.color: true
+      expicore.signs.magic: true
+  expicore.admin:
+    description: Административные права
+    default: op
+  expicore.tpa:
+    description: Право на телепортацию к игрокам
+    default: true
+  expicore.home:
+    description: Право на установку и использование домов
+    default: true
+  expicore.warp:
+    description: Право на использование варпов
+    default: true
+  expicore.warp.set:
+    description: Право на создание варпов
+    default: op
+  expicore.warp.delete:
+    description: Право на удаление варпов
+    default: op
+  expicore.gamemode:
+    description: Право на смену игрового режима
+    default: op
+  expicore.god:
+    description: Право на режим неуязвимости
+    default: op
+  expicore.fly:
+    description: Право на режим полёта
+    default: op
+  expicore.kit:
+    description: Право на использование китов
+    default: true
+  expicore.kit.admin:
+    description: Право на создание/удаление/редактирование китов
+    default: op
+  expicore.feed:
+    description: Право на восстановление голода
+    default: op
+  expicore.feed.others:
+    description: Право на восстановление голода другим
+    default: op
+  expicore.heal:
+    description: Право на восстановление здоровья
+    default: op
+  expicore.heal.others:
+    description: Право на лечение других игроков
+    default: op
+  expicore.repair.hand:
+    description: Право на починку предмета в руке
+    default: op
+  expicore.repair.all:
+    description: Право на починку всего инвентаря
+    default: op
+  expicore.hat:
+    description: Право на надевание предмета на голову
+    default: op
+  expicore.suicide:
+    description: Право на использование /suicide
+    default: true
+  expicore.workbench:
+    description: Право на виртуальный верстак
+    default: true
+  expicore.enderchest:
+    description: Право на открытие эндер-сундука
+    default: op
+  expicore.invsee:
+    description: Право на просмотр инвентаря игроков
+    default: op
+  expicore.broadcast:
+    description: Право на глобальные объявления
+    default: op
+  expicore.clear:
+    description: Право на очистку своего инвентаря
+    default: op
+  expicore.clear.others:
+    description: Право на очистку инвентаря других
+    default: op
+  expicore.spawn:
+    description: Право на телепортацию на спавн
+    default: true
+  expicore.setspawn:
+    description: Право на установку точки спавна
+    default: op
+  expicore.msg:
+    description: Право на личные сообщения
+    default: true
+  expicore.ignore:
+    description: Право на игнорирование игроков
+    default: true
+  expicore.ignore.exempt:
+    description: Защита от игнорирования (нельзя заигнорить)
+    default: op
+  expicore.socialspy:
+    description: Право на чтение чужих личных сообщений
+    default: op
+  expicore.kick:
+    description: Право на кик игрока
+    default: op
+  expicore.mute:
+    description: Право на мут игрока
+    default: op
+  expicore.unmute:
+    description: Право на снятие мута
+    default: op
+  expicore.ban:
+    description: Право на перманентный бан
+    default: op
+  expicore.unban:
+    description: Право на снятие бана
+    default: op
+  expicore.tempban:
+    description: Право на временный бан
+    default: op
+  expicore.afk:
+    description: Право на переключение режима AFK
+    default: true
+  expicore.gc:
+    description: Право на просмотр статистики сервера
+    default: op
+  expicore.near:
+    description: Право на просмотр ближайших игроков
+    default: true
+  expicore.signs.color:
+    description: Право на цветные таблички (&-коды)
+    default: op
+  expicore.signs.magic:
+    description: Право на магический стиль (&k) на табличках
+    default: op
